@@ -1,14 +1,21 @@
 {
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        ".idea": true,
-        "**/.idea": true,
-        "**/node_modules": true,
-        "frontend/.ltk": true,
-        "frontend/.vscode": true
-    },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    ".idea": true,
+    "**/.idea": true,
+    "**/node_modules": true,
+    "frontend/.ltk": true,
+    "frontend/.vscode": true
+  },
+  // Enable per-language
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "prettier.configPath": "/Users/artem.kryvonis/alteryx/Udemy/nest-task-manager/.prettierrc",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

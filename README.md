@@ -1,5 +1,5 @@
 <h1 align="center"> Course Task Manager project</h1>
-## Technology Stack
+## Stack
 <table class=“image” align=“center” >
 <tr>
 <td><img src="https://nestjs.com/img/logo_text.svg" width="100" alt="Nest Logo" />
