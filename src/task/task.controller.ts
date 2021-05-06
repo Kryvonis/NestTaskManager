@@ -19,7 +19,7 @@ export class TaskController {
   constructor(private taskService: TaskService) {}
   @Get()
   getTasks(@Query() filterDto?: FilterTaskDto): Task[] {
-    if (Object.keys(filterDto).length) {
+    if (filterDto && Object.keys(filterDto).length) {
       return this.taskService.getTaskWithFilter(filterDto);
     }
     return this.taskService.getAllTasks();
