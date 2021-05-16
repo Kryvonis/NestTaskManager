@@ -17,5 +17,8 @@
   },
   "prettier.configPath": "/Users/artem.kryvonis/alteryx/Udemy/nest-task-manager/.prettierrc",
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
