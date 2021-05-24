@@ -1,0 +1,3 @@
+db:
+  autoLoadEntities: false
+  synchronize: false

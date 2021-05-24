@@ -1,0 +1,10 @@
+db:
+  type: 'postgres'
+  host: 'localhost'
+  username: 'postgres'
+  password: 'postgres'
+  autoLoadEntities: true,
+  synchronize: true,
+  
+jwt:
+  secret: 'MYSECRET'

@@ -1,15 +1,18 @@
+import { User } from 'src/auth/user.entity';
 import { EntityRepository, Repository } from 'typeorm';
+
 import { CreateTaskDto } from './dto/create-task.dto';
 import { FilterTaskDto } from './dto/filter-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { TaskStatus } from './task-status.enum';
-import { Task, TABLE_NAME } from './task.entity';
+import { TABLE_NAME, Task } from './task.entity';
 
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
-  async getTasks(filter?: FilterTaskDto): Promise<Task[]> {
+  async getTasks(user: User, filter?: FilterTaskDto): Promise<Task[]> {
     const { status, search } = { ...filter };
-    const query = this.createQueryBuilder(`${TABLE_NAME}task`);
+    const query = this.createQueryBuilder(`${TABLE_NAME}`);
+    query.where('task.userId = :userId', { userId: user.id });
     if (status) {
       query.andWhere(`${TABLE_NAME}.status = :status`, { status });
     }
@@ -21,13 +24,16 @@ export class TaskRepository extends Repository<Task> {
     }
     return query.getMany();
   }
-  async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+  async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
     const { title, description } = createTaskDto;
     const task: Task = new Task();
     task.title = title;
     task.description = description;
     task.status = TaskStatus.OPEN;
+    task.user = user;
     await task.save();
+
+    delete task.user;
     return task;
   }
   async updateTask(task: Task, updatedTaskDto: UpdateTaskDto): Promise<Task> {
